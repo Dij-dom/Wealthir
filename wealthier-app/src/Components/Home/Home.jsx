@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
 import './home.css';
 import logo from '../assets/logo-color.png';
 import { useNavigate } from 'react-router-dom';
-import { Modal, Form, Input, Select, Button } from 'antd';
-
-const { Option } = Select;
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isIncomeModalVisible, setIncomeModalVisible] = useState(false);
+  const [incomeList, setIncomeList] = useState([]);
+  const [title, setTitle] = useState('Income');
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState(null);
   const navigate = useNavigate();
   const handleUserIconClick = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -18,19 +20,29 @@ const Home = () => {
     navigate('/');
   };
 
-  const showModal = () => {
-    setModalVisible(true);
+  const showIncomeModal = () => {
+    setIncomeModalVisible(true);
   };
 
-  const handleCancel = () => {
-    setModalVisible(false);
+  const handleIncomeModalOk = () => {
+    const newIncome = {
+      title,
+      amount,
+      date: date ? date.toLocaleDateString() : '',
+    };
+
+    setIncomeList([...incomeList, newIncome]);
+    setIncomeModalVisible(false);
+
+    setTitle('');
+    setAmount('');
+    setDate(null);
   };
 
-  const handleFinish = (values) => {
-    // Handle form submission here
-    console.log('Received values:', values);
-    setModalVisible(false);
+  const handleIncomeModalCancel = () => {
+    setIncomeModalVisible(false);
   };
+
 
   return (
     <div className="home-container">
@@ -93,51 +105,26 @@ const Home = () => {
             <input type="text" placeholder="Search..." className="search-bar" />
           </div>
           <div className="mainsecSearchright">
-            <button className="add-button" onClick={showModal}>ADD INCOME</button>
-            <button className="add-button">ADD EXPENSE</button>
+            <button className="add-button"id='income' onClick={showIncomeModal}>ADD INCOME</button>
+            <button className="add-button"id='expense'>ADD EXPENSE</button>
+            {/* <div className="dropdown-content">
+              <p>INCOME</p>
+              <p>EXPENSE</p>
+            </div> */}
           </div>
-          
-          {/* Ant Design Modal */}
-      <Modal
-        title="Add Income"
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={null}
-      >
-        <Form layout="vertical" onFinish={handleFinish}>
-          <Form.Item label="Title" name="title" rules={[{ required: true }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item label="Amount" name="amount" rules={[{ required: true }]}>
-            <Input type="number" min={0} />
-          </Form.Item>
-          <Form.Item label="Type" name="type" rules={[{ required: true }]}>
-            <Select>
-              <Select.Option value="Income">Income</Select.Option>
-              <Select.Option value="Expense">Expense</Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label="Description" name="description">
-            <Input />
-          </Form.Item>
-          <Form.Item label="Date" name="date" rules={[{ required: true }]}>
-            <Input type="date" />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">
-              Save
-            </Button>
-          </Form.Item>
-        </Form>
-      </Modal>
-
           </div>
           <div className="mainsecContent">
             <div className="mainsecContent-left">
-            <h3>Income Records</h3>
-            <div className="income-records">
-              {/* Content for Income Records goes here */}
-            </div>
+              <h3>Income Records</h3>
+              <div className="income-records">
+                {incomeList.map((income, index) => (
+                  <div key={index}>
+                    <p>Title: {income.title}</p>
+                    <p>Amount: {income.amount}</p>
+                    <p>Date: {income.date}</p>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="mainsecContent-right">
             <h3>Expense Records</h3>
@@ -153,6 +140,52 @@ const Home = () => {
       <footer className="home-footer">
         <p>&copy; 2024 Your Website. All rights reserved.</p>
       </footer>
+
+      {/* Income Modal */}
+      <Modal
+        isOpen={isIncomeModalVisible}
+        onRequestClose={handleIncomeModalCancel}
+        contentLabel="Add Income"
+        style={{
+          content: {
+            maxWidth: '300px',  // Set the maximum width of the modal
+            width: '80%',       // Set the overall width of the modal
+            height: '50%',
+            margin: 'auto',     // Center the modal horizontally
+            background: 'linear-gradient(#570055, #002a57)',
+            borderRadius: '18px'
+          },
+        }}
+      >
+        <label>
+          Title:
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} 
+          style={{width: '100%', padding: '5px' }}
+          />
+        </label>
+        <br />
+        <label>
+          Amount:
+          <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)}
+          style={{ width: '100%', padding: '5px' }}
+          />
+        </label>
+        <br />
+        <label>
+          Date:
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
+          style={{ width: '100%', padding: '5px' }}
+          />
+        </label>
+        <br />
+        <div style={{ textAlign: 'right' }}></div>
+        <button onClick={handleIncomeModalOk}
+        style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px 15px', marginRight: '10px' }}
+        >Add Income</button>
+        <button onClick={handleIncomeModalCancel}
+        style={{ backgroundColor: '#f44336', color: 'white', padding: '10px 15px' }}  
+        >Cancel</button>
+      </Modal>
     </div>
   );
 }
