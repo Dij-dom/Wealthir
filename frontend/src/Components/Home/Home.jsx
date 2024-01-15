@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 import './home.css';
-import { useLogout } from '../../hooks/useLogout';
+import logo from '../assets/logo-color.png';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
