@@ -158,6 +158,8 @@ body {
 .mainsecSearchright {
   flex: 1.5;
   margin-left: 200px;
+  padding-right: 0px;
+  padding-left: 0px;
   margin-right: 0;
   display: flex;
   align-items: center;
@@ -182,34 +184,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 170px;
-}
-
-.add-button:hover {
-  background: linear-gradient(#570055, #002a57);
-}
-
-/* dropdown */
-.dropdown-container {
-  position: relative;
-}
-
-.dropdown-content {
-  position: absolute;
-  top: 85%; /* Position the dropdown below the button */
-  left: 175px;
-  background-color: #002a57; /* Same as button color */
-  color: #fff;
-  border-radius: 4px;
-  padding: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: none;
-  flex-direction: column;
-  z-index: 1; /* Ensure the dropdown appears above other elements */
-}
-
-.add-button:hover + .dropdown-content {
-  display: flex; /* Show the dropdown on hover */
+  margin-left: 10px;
 }
 
 

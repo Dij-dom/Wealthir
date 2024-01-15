@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import './home.css';
 import logo from '../assets/logo-color.png';
 import { useNavigate } from 'react-router-dom';
+import { Modal, Form, Input, Select, Button } from 'antd';
+
+const { Option } = Select;
 
 const Home = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
   const navigate = useNavigate();
   const handleUserIconClick = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -14,6 +18,19 @@ const Home = () => {
     navigate('/');
   };
 
+  const showModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setModalVisible(false);
+  };
+
+  const handleFinish = (values) => {
+    // Handle form submission here
+    console.log('Received values:', values);
+    setModalVisible(false);
+  };
 
   return (
     <div className="home-container">
@@ -76,12 +93,44 @@ const Home = () => {
             <input type="text" placeholder="Search..." className="search-bar" />
           </div>
           <div className="mainsecSearchright">
-            <button className="add-button"> + ADD</button>
-            <div className="dropdown-content">
-              <p>INCOME</p>
-              <p>EXPENSE</p>
-            </div>
+            <button className="add-button" onClick={showModal}>ADD INCOME</button>
+            <button className="add-button">ADD EXPENSE</button>
           </div>
+          
+          {/* Ant Design Modal */}
+      <Modal
+        title="Add Income"
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Form layout="vertical" onFinish={handleFinish}>
+          <Form.Item label="Title" name="title" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item label="Amount" name="amount" rules={[{ required: true }]}>
+            <Input type="number" min={0} />
+          </Form.Item>
+          <Form.Item label="Type" name="type" rules={[{ required: true }]}>
+            <Select>
+              <Select.Option value="Income">Income</Select.Option>
+              <Select.Option value="Expense">Expense</Select.Option>
+            </Select>
+          </Form.Item>
+          <Form.Item label="Description" name="description">
+            <Input />
+          </Form.Item>
+          <Form.Item label="Date" name="date" rules={[{ required: true }]}>
+            <Input type="date" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Save
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+
           </div>
           <div className="mainsecContent">
             <div className="mainsecContent-left">
