@@ -4,20 +4,33 @@ import './LoginSignUp.css';
 import user_icon from '../assets/person.png';
 import email_icon from '../assets/email.png';
 import password_icon from '../assets/password.png';
-import { useNavigate } from 'react-router-dom';
+import { useSignUp } from '../../hooks/useSignup';
+import { useLogin } from '../../hooks/useLogin';
 
 const LoginSignUp = () => {
   const [activeTab, setActiveTab] = useState("Login");
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const {signup, errorS, isLoadingS} = useSignUp();
+  const {login, error, isLoading} = useLogin();
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async (e) => {
     // Perform form submission logic here
     // Redirect to home page
-    navigate('/home');
+  
+    e.preventDefault();
+    if(activeTab === 'Login'){
+      await login(username, password);
+    }
+    if(activeTab === 'Sign Up'){
+      await signup(username,email, password);
+    }
+    
   };
 
   return (
@@ -32,26 +45,40 @@ const LoginSignUp = () => {
         {activeTab === "Sign Up" && (
           <div className="login-input">
             <img src={user_icon} alt="" />
-            <input type="text" placeholder="User Name" />
+            <input
+              type="text"
+              onChange={e => setUsername(e.target.value)}
+              value={username}
+              placeholder="User Name" />
           </div>
         )}
 
         {/* email */}
         <div className="login-input">
           <img src={email_icon} alt="" />
-          <input type="email" placeholder='Email ID' />
+          <input
+            type="email"
+            onChange={e => setEmail(e.target.value)}
+            value={email}
+            placeholder='Email ID' />
         </div>
         {/* password */}
         <div className="login-input">
           <img src={password_icon} alt="" />
-          <input type="password" placeholder='Password' />
+          <input
+            type="password"
+            onChange={e => setPassword(e.target.value)}
+            value={password}
+            placeholder='Password' />
         </div>
       </div>
 
       {/* buttons */}
       <div className="login-submit-container">
-        <div className="login-submit" onClick={handleFormSubmit}>{activeTab}</div>
+        <div className="login-submit" onClick={handleFormSubmit} disabled = {isLoading}>{activeTab}</div>
       </div>
+      {error && <div className='error'>{error}</div>}
+      {error && <div className='errorS'>{error}</div>}
     </div>
   );
 };

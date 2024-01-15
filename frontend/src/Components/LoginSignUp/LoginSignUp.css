@@ -1,8 +1,9 @@
 /* LoginSignUp.css */
 body {
   margin: 0;
-  height: auto;
-  background: linear-gradient(#570055, #002a57);
+  height: 150vh;
+  background: linear-gradient(#003152, #8080FF);
+  /* font-family: cursive; */
 }
 
 .login-container {
@@ -127,4 +128,16 @@ body {
 
 .login-submit:hover {
   background-color: #0056b3;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid #e7195a;
+  color: #e7195a;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid #e7195a;
 }
