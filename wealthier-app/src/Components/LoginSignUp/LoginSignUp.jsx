@@ -21,36 +21,36 @@ const LoginSignUp = () => {
   };
 
   return (
-    <div className="container">
-      <div className="header">
-        <div className={`tab login-tab ${activeTab === "Login" ? "active" : ""}`} onClick={() => handleTabClick("Login")}>Login</div>
-        <div className={`tab signup-tab ${activeTab === "Sign Up" ? "active" : ""}`} onClick={() => handleTabClick("Sign Up")}>Sign Up</div>
-       </div>
+    <div className="login-container">
+      <div className="login-header">
+        <div className={`login-tab login-login-tab ${activeTab === "Login" ? "active" : ""}`} onClick={() => handleTabClick("Login")}>Login</div>
+        <div className={`login-tab login-signup-tab ${activeTab === "Sign Up" ? "active" : ""}`} onClick={() => handleTabClick("Sign Up")}>Sign Up</div>
+      </div>
 
-      <div className="inputs">
+      <div className="login-inputs">
         {/* Render form fields based on activeTab */}
         {activeTab === "Sign Up" && (
-          <div className="input">
+          <div className="login-input">
             <img src={user_icon} alt="" />
             <input type="text" placeholder="User Name" />
           </div>
         )}
 
         {/* email */}
-        <div className="input">
+        <div className="login-input">
           <img src={email_icon} alt="" />
           <input type="email" placeholder='Email ID' />
         </div>
         {/* password */}
-        <div className="input">
+        <div className="login-input">
           <img src={password_icon} alt="" />
           <input type="password" placeholder='Password' />
         </div>
       </div>
 
       {/* buttons */}
-      <div className="submit-container">
-        <div className="submit" onClick={handleFormSubmit}>{activeTab}</div>
+      <div className="login-submit-container">
+        <div className="login-submit" onClick={handleFormSubmit}>{activeTab}</div>
       </div>
     </div>
   );

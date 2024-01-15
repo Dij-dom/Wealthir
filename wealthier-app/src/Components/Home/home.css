@@ -1,0 +1,52 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #002a57;
+    color: #808080;
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .home-header {
+    background-color: #002a57;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  .home-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 20px;
+  }
+  
+  .home-section {
+    flex: 1;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    color: #002a57;
+    border-radius: 8px;
+  }
+  
+  .home-footer {
+    background-color: #002a57;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+  }
+  
