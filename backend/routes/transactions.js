@@ -6,7 +6,11 @@ const {
     updateTransaction,
     deleteTransaction
 } = require('../controllers/transactionController');
+const requireAuth = require('../middleware/requireAuth');
 const router = express.Router();
+
+// Middleware
+router.use(requireAuth);
 
 // Get all expenses
 router.get('/', getTransactions);
