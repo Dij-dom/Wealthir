@@ -1,18 +1,20 @@
 import {React, useState} from 'react'
 import logo from '../assets/logo-color.png';
 import './home.css';
-import { useNavigate } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useLogout } from '../../hooks/useLogout';
+
 
 const Header = () =>{
     const [isDropdownVisible, setDropdownVisible] = useState(false);
-    const navigate = useNavigate();
+    const {logout} = useLogout();
 
     const handleUserIconClick = () => {
         setDropdownVisible(!isDropdownVisible);
       };
 
     const handleLogoutClick = () => {
-        navigate('/');
+        logout();
       };
 
     return(
@@ -22,13 +24,13 @@ const Header = () =>{
               <img src={logo} alt="Logo" />
             </div>
             <div className="user-profile" onClick={handleUserIconClick}>
-              <i className="fas fa-user" style={{ color: '#808080' }}></i>
+              <i className="fa fa-user" style={{ color: '#808080' }}></i>
               {isDropdownVisible && (
                 <div className="dropdown" style={{ backgroundColor: '#808080', color: '#002a57' }}>
-                <button onClick={handleLogoutClick} className="dropdown-button">
-                  Logout
-                </button>
-              </div>
+                  <button onClick={handleLogoutClick} className="dropdown-button">
+                    Logout
+                  </button>
+                </div>
               )}
             </div>
           </div>
