@@ -12,8 +12,8 @@ const LoginSignUp = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const {signup, errorS, isLoadingS} = useSignUp();
-  const {login, error, isLoading} = useLogin();
+  const {signup, error, isLoading} = useSignUp();
+  const {login, loginError, isLoginLoading} = useLogin();
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -25,10 +25,11 @@ const LoginSignUp = () => {
   
     e.preventDefault();
     if(activeTab === 'Login'){
-      await login(username, password);
+      await login(email, password);
     }
     if(activeTab === 'Sign Up'){
-      await signup(username,email, password);
+      await signup(username, email, password);
+   
     }
     
   };
@@ -45,40 +46,39 @@ const LoginSignUp = () => {
         {activeTab === "Sign Up" && (
           <div className="login-input">
             <img src={user_icon} alt="" />
-            <input
-              type="text"
-              onChange={e => setUsername(e.target.value)}
-              value={username}
-              placeholder="User Name" />
+            <input 
+             type="text"
+             onChange={e => setUsername(e.target.value)} 
+             value = {username}
+             placeholder="User Name" />
           </div>
         )}
 
         {/* email */}
         <div className="login-input">
           <img src={email_icon} alt="" />
-          <input
-            type="email"
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-            placeholder='Email ID' />
+          <input 
+           type="email" 
+           onChange={e => setEmail(e.target.value)} 
+           value = {email}
+           placeholder='Email ID' />
         </div>
         {/* password */}
         <div className="login-input">
           <img src={password_icon} alt="" />
-          <input
-            type="password"
-            onChange={e => setPassword(e.target.value)}
-            value={password}
-            placeholder='Password' />
+          <input 
+           type="password" 
+           onChange={e => setPassword(e.target.value)} 
+           value = {password}
+           placeholder='Password' />
         </div>
-      </div>
+      </div>  
 
       {/* buttons */}
       <div className="login-submit-container">
-        <div className="login-submit" onClick={handleFormSubmit} disabled = {isLoading}>{activeTab}</div>
+        <div className="login-submit" onClick={handleFormSubmit}>{activeTab}</div>
       </div>
-      {error && <div className='error'>{error}</div>}
-      {error && <div className='errorS'>{error}</div>}
+      {loginError && <div>{loginError}</div>}
     </div>
   );
 };

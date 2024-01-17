@@ -3,8 +3,8 @@ import { useAuthContext } from './useAuthContext'
 
 
 export const useSignUp = () =>{
-    const [errorS, setError] = useState(null);
-    const [isLoadingS, setIsLoading] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
     const {dispatch} = useAuthContext();
 
     const signup = async(username, email, password) =>{
@@ -32,5 +32,5 @@ export const useSignUp = () =>{
 
         }
     }
-    return {signup, isLoadingS, errorS}
+    return {signup, isLoading, error}
 }
