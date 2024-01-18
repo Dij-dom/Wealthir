@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import userAvatar from '../assets/hair_flower_12.png';
+import userAvatar from '../assets/avatar.png';
 import './home.css';
 
 const Details = () => {
