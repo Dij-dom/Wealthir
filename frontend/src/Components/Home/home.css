@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Silkscreen", sans-serif
 }
 
 body {
@@ -95,14 +96,16 @@ body {
 
 .ss1left-content img {
   width: 80%;
-  max-width: 40px; /* Adjust the max-width as needed */
-  border-radius: 50%;
+  max-width: 100px;
+  margin-left: 50px;
+   /* Adjust the max-width as needed */
 }
 
 .ss1right-content {
   flex: 2;
   padding: 0;
-  margin: 0;
+  margin-left: 10px;
+  color:#f1f1f1;
 }
 
 
@@ -214,7 +217,7 @@ body {
 
 .home-footer {
   background-color: #002a57;
-  color: #000;
+  color: #f1f1f1;
   padding: 1em;
   text-align: center;
   margin: 0px;
@@ -224,7 +227,7 @@ body {
 }
 
 
-.income-details {
+.transaction-details {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   margin: 20px auto;
@@ -234,25 +237,29 @@ body {
   text-align: left;
 }
 
-.income-details p {
+.transaction-details p {
   margin: 0;
   font-size: 0.9em;
-  color: #555;
+  color: #370031;
 }
-.income-details span {
+.transaction-details span {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: #4357AD;
   padding: 6px;
   border-radius: 50%;
   color: #d8d0d0;
 }
 
-.income-details h4 {
+.transaction-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
 
+.img{
+  height:100px;
+  width: 100px;
+}
