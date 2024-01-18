@@ -78,7 +78,8 @@ const LoginSignUp = () => {
       <div className="login-submit-container">
         <div className="login-submit" onClick={handleFormSubmit}>{activeTab}</div>
       </div>
-      {loginError && <div>{loginError}</div>}
+      {loginError && <div className='error'>{loginError}</div>}
+      {error && <div className='error'>{error}</div>}
     </div>
   );
 };

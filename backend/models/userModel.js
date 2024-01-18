@@ -17,6 +17,14 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    level: {
+        type: Number,
+        default: 0
+    },
+    ex :{
+        type: Number,
+        default: 0
     }
 });
 

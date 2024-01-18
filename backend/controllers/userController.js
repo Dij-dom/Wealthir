@@ -36,6 +36,17 @@ const signupUser = async (req, res) =>{
     }
 };
 
+const getUserDetails = async (req, res) =>{
+    const {email} = req.body;
+
+    const user = await User.findOne({email});
+
+    const {username, level, ex} = user;
+
+    res.status(200).json({username, level, ex});
+
+}
 
 
-module.exports = {loginUser, signupUser};
+
+module.exports = {loginUser, signupUser, getUserDetails};
