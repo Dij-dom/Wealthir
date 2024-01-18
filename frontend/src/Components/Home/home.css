@@ -7,7 +7,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #002a57;
   color: #808080;
   font-family: Arial, sans-serif;
   height: auto;
@@ -36,7 +35,7 @@ body {
 
 .home-header {
   background-color: #002a57;
-  color: #fff;
+  color: #000;
   padding: 1em;
   text-align: center;
 }
@@ -48,9 +47,9 @@ body {
 .home-section1 {
   flex: 1;
   padding: 20px;
-  background-color: #fff;
+  background-color: #000;
   background: linear-gradient(#002a57, #570055);
-  color: #fff;
+  color: #000;
   margin: 0px;
 }
 .section1-container {
@@ -117,7 +116,7 @@ body {
   flex: 1;
   padding: 20px;
   background: linear-gradient(#570055, #002a57);
-  color: #fff;
+  color: #000;
   margin: 0px; 
 }
 .mainsecSearch{
@@ -210,11 +209,12 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
   margin: 10px;
   border-radius: 15px;
+  overflow: auto;
 }
 
 .home-footer {
   background-color: #002a57;
-  color: #fff;
+  color: #000;
   padding: 1em;
   text-align: center;
   margin: 0px;
@@ -222,3 +222,37 @@ body {
 .home-footer p{
   margin: 0px;
 }
+
+
+.income-details {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.income-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+.income-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #d8d0d0;
+}
+
+.income-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+
