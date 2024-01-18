@@ -27,13 +27,14 @@ const Header = () =>{
               <i className="fa fa-user" style={{ color: '#808080' }}></i>
               {isDropdownVisible && (
                 <div className="dropdown" style={{ backgroundColor: '#808080', color: '#002a57' }}>
-                  <button onClick={handleLogoutClick} className="dropdown-button">
+                  <button onClick={handleLogoutClick} className="dropdown-button" style={{backgroundColor: '#808080', borderBlock:'none', padding: '5px'}}>
                     Logout
                   </button>
                 </div>
               )}
             </div>
           </div>
+          
         </header>
     )
 }

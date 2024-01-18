@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import userAvatar from '../assets/hair_flower_12.png';
+import './home.css';
 
 const Details = () => {
   const [userDetails, setUserDetails] = useState({
@@ -46,8 +48,7 @@ const Details = () => {
         <div className="section11-box">
           <div className="ss1left-content">
             {/* User avatar image goes here */}
-            {/* <img src={userAvatar} alt="User Avatar" /> */}
-            avatar img
+            <img src={userAvatar} alt="User Avatar" />
           </div>
           <div className="ss1right-content">
             {/* Display user details */}

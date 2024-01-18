@@ -36,6 +36,7 @@ const LoginSignUp = () => {
 
   return (
     <div className="login-container">
+      
       <div className="login-header">
         <div className={`login-tab login-login-tab ${activeTab === "Login" ? "active" : ""}`} onClick={() => handleTabClick("Login")}>Login</div>
         <div className={`login-tab login-signup-tab ${activeTab === "Sign Up" ? "active" : ""}`} onClick={() => handleTabClick("Sign Up")}>Sign Up</div>

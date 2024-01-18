@@ -96,10 +96,10 @@ const Home = () => {
         <section className="home-section2">
           <div className="mainsecSearch">
             <div className="mainsecSearchleft">
-              <i className="fas fa-filter fa-lg" style={{ color: '#808080' }}></i>
+              {/* <i className="fas fa-filter fa-lg" style={{ color: '#808080' }}></i> */}
             </div>
             <div className="mainsecSearchmiddle">
-              <input type="text" placeholder="Search..." className="search-bar" />
+              {/* <input type="text" placeholder="Search..." className="search-bar" /> */}
             </div>
             <div className="mainsecSearchright">
               <button className="add-button" id='income' onClick={showIncomeModal}>ADD INCOME</button>
@@ -185,9 +185,9 @@ const Home = () => {
           content: {
             maxWidth: '300px',  // Set the maximum width of the modal
             width: '80%',       // Set the overall width of the modal
-            height: '50%',
+            height: '40%',
             margin: 'auto',     // Center the modal horizontally
-            background: 'linear-gradient(#570055, #002a57)',
+            background: '#002a57',
             borderRadius: '18px'
           },
         }}
@@ -195,27 +195,27 @@ const Home = () => {
         <label>
           Title:
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} 
-          style={{width: '100%', padding: '5px' }}
+          style={{width: '100%', padding: '5px', marginBottom: '15px' }}
           />
         </label>
         <br />
         <label>
           Amount:
           <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)}
-          style={{ width: '100%', padding: '5px' }}
+          style={{ width: '100%', padding: '5px' , marginBottom: '15px'}}
           />
         </label>
         <br />
         <label>
           Date:
           <input type="date" value={date.toISOString().split('T')[0]} onChange={(e) => setDate(e.target.value)}
-          style={{ width: '100%', padding: '5px' }}
+          style={{ width: '100%', padding: '5px', marginBottom: '15px' }}
           />
         </label>
         <br />
         <div style={{ textAlign: 'right' }}></div>
         <button onClick={handleIncomeModalOk}
-        style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px 15px', marginRight: '10px' }}
+        style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px 15px', marginRight: '40px' }}
         >Add Income</button>
         <button onClick={handleModalCancel}
         style={{ backgroundColor: '#f44336', color: 'white', padding: '10px 15px' }}  
@@ -230,41 +230,41 @@ const Home = () => {
         contentLabel="Add Expense"
         style={{
           content: {
-            maxWidth: '300px',
-            width: '80%',
-            height: '50%',
+            maxWidth: '300px',  // Set the maximum width of the modal
+            width: '80%',       // Set the overall width of the modal
+            height: '40%',
             margin: 'auto',
-            background: 'linear-gradient(#570055, #002a57)',
+            background: '#002a57',
             borderRadius: '18px',
           },
         }}
       >
 
-      <label>
+      <label style={{ marginBottom: '10px' }}>
           Title:
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} 
-          style={{width: '100%', padding: '5px' }}
+          style={{width: '100%', padding: '5px', marginBottom: '15px'}}
           />
         </label>
         <br />
         <label>
           Amount:
           <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)}
-          style={{ width: '100%', padding: '5px' }}
+          style={{ width: '100%', padding: '5px', marginBottom: '15px' }}
           />
         </label>
         <br />
         <label>
           Date:
           <input type="date" value={date.toISOString().split('T')[0]} onChange={(e) => setDate(e.target.value)}
-          style={{ width: '100%', padding: '5px' }}
+          style={{ width: '100%', padding: '5px', marginBottom: '15px' }}
           />
         </label>
         <br />
         <div style={{ textAlign: 'right' }}></div>
         <button
           onClick={handleExpenseModalOk}
-          style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px 15px', marginRight: '10px' }}
+          style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px 15px', marginRight: '10px', marginTop: '20px' }}
         >
           Add Expense
         </button>
