@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import avatar from '../assets/avatar.png'
+import MainDashboard from './accountSummary';
 
 const Details = () => {
   const [userDetails, setUserDetails] = useState({
@@ -7,8 +9,8 @@ const Details = () => {
     level: 0,
     ex: 0
   });
-  const {user} = useAuthContext();
-  const {email} = user;
+  const { user } = useAuthContext();
+  const { email } = user;
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -16,7 +18,7 @@ const Details = () => {
 
         const response = await fetch(`http://localhost:4000/api/users`, {
           method: 'POST',
-          body: JSON.stringify({email}),
+          body: JSON.stringify({ email }),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -44,15 +46,13 @@ const Details = () => {
     <section className="home-section1">
       <div className="section1-container">
         <div className="section11-box">
-          <div className="ss1left-content">
-            {/* User avatar image goes here */}
-            {/* <img src={userAvatar} alt="User Avatar" /> */}
-            avatar img
+          <div className='avatar'>
+            <img src={avatar} className='img'/>
           </div>
           <div className="ss1right-content">
             {/* Display user details */}
             <>
-              <p>Username: {userDetails.username}</p>
+              <p>Hi, {userDetails.username}</p>
               <p>Level: {userDetails.level}</p>
               <p>Experience: {userDetails.ex}</p>
               <br />
@@ -61,10 +61,7 @@ const Details = () => {
           </div>
         </div>
         <div className="section12-box">
-          <h3 style={{ marginBottom: '15px', color: '#fff' }}>Account Summary</h3>
-          <p style={{ marginBottom: '10px', color: '#fff' }}>Total Income: <span>{/* Add total income value here */}</span></p>
-          <p style={{ marginBottom: '10px', color: '#fff' }}>Total Expense: <span>{/* Add total expense value here */}</span></p>
-          <p style={{ marginBottom: '0', color: '#fff' }}>Total Balance: <span>{/* Add total balance value here */}</span></p>
+          <MainDashboard/>
         </div>
         <div className="section13-box">
           {/* Content for the third box goes here */}

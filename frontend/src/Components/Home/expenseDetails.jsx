@@ -1,8 +1,8 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { useTransactionContext } from '../../hooks/useTransactionContext'
+import { useTransactionContext } from '../../hooks/useTransactionContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-const IncomeDetails = ({ transaction }) => {
+const ExpenseDetails = ({ transaction }) => {
     const { dispatch } = useTransactionContext();
     const {user} = useAuthContext();
 
@@ -25,7 +25,7 @@ const IncomeDetails = ({ transaction }) => {
         }
     }
     return (
-        <div className='income-details'>
+        <div className='expense-details'>
             <h4>{transaction.title}</h4>
             <p>Amount: ₹ {transaction.amount}</p>
             <p>Date: {transaction.date}</p>
@@ -37,6 +37,4 @@ const IncomeDetails = ({ transaction }) => {
     )
 }
 
-export default IncomeDetails;
-
-
+export default ExpenseDetails;

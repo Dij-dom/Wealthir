@@ -22,7 +22,7 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
-    ex :{
+    ex: {
         type: Number,
         default: 0
     }

@@ -4,6 +4,7 @@ import './App.css';
 import LoginSignUp from './Components/LoginSignUp/LoginSignUp';
 import Home from './Components/Home/Home.jsx';
 import { useAuthContext } from './hooks/useAuthContext.jsx';
+import NotFound from './Components/NotFound.jsx';
 
 function App() {
   const {user} = useAuthContext();
@@ -17,6 +18,7 @@ function App() {
         <Route 
           path="/home" 
           element={user ? <Home/> : <Navigate to='/'/>} />
+        <Route path = '*' Component={NotFound}/>
       </Routes>
     </Router>
   );

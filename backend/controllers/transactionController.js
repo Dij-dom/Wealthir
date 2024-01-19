@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 // Get all transactions
 const getTransactions = async(req, res) =>{
-    const transactions = await Transaction.find({}).sort({createdAt: -1});
+    const user_id = req.user._id
+    const transactions = await Transaction.find({user_id}).sort({createdAt: -1});
     res.status(200).json(transactions);
 }
 
@@ -31,7 +32,8 @@ const createTransaction = async (req, res) =>{
     const {title, amount, type, description, date} = req.body;
 
     try {
-        const transaction = await Transaction.create({title, amount, type, description, date});
+        const user_id = req.user._id
+        const transaction = await Transaction.create({title, amount, type, description, date, user_id});
         res.status(201).json(transaction);
     } catch (error) {
         res.status(400).json({error: error.message});
@@ -68,7 +70,7 @@ const deleteTransaction = async(req, res) =>{
     const transaction = await Transaction.findOneAndDelete({_id: id});
 
     if(!transaction){
-        return res.send(404).json({message: "No such transaction"});
+        return res.status(404).json({message: "No such transaction"});
     }
 
     res.status(200).json(transaction);

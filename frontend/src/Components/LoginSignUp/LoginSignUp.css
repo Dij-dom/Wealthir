@@ -1,11 +1,12 @@
 /* LoginSignUp.css */
 body {
   margin: 0;
-  height: 150vh;
-  /*background: linear-gradient(#003152, #8080FF);*/
-  background-color: #ffefef;
+  height: auto;
+  background-image: url("../assets/bimg.svg");
+  background-color: #002a57;
   font-family: 'roboto';
   /* font-family: cursive; */
+  
 }
 
 .login-container {
@@ -62,7 +63,7 @@ body {
   cursor: pointer;
   border-radius: 10px 10px 0 0;
   transition: background-color 0.3s ease;
-  background-color: #f0c28a;
+  /* background-color: #f0c28a; */
   margin: 0;
   width: 50%;
 }
@@ -80,7 +81,7 @@ body {
   align-items: center;
   width: 100%;
   height: 50px;
-  background: #e0f3bc;
+  background: #80808034;
   border-radius: 6px;
 }
 
@@ -95,7 +96,7 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  color: #333;
+  color: #002a57;
   font-size: 16px;
 }
 
@@ -134,11 +135,11 @@ body {
 
 .error {
   padding: 10px;
-  background: #ffefef;
+  background: #80808025;
   border: 1px solid #007bff;
   color: #007bff;
   border-radius: 4px;
-  margin: 20px 0;
+  margin:20px
 }
 input.error {
   border: 1px solid #e7195a;
